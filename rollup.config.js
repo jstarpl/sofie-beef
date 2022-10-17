@@ -128,7 +128,7 @@ const config = {
     svgo(),
     !production &&
       serve({
-        contentBase: './dist',
+        contentBase: ['./dist', './dist/public'],
         port: 3000,
         historyApiFallback: true,
       }),

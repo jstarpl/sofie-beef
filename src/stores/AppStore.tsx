@@ -1,4 +1,5 @@
-import { createState, createContext, useContext } from 'solid-js';
+import { createContext, JSX, useContext } from 'solid-js';
+import { createStore } from 'solid-js/store';
 
 type AppStore = [{ isAuthorized: boolean }, { authorize: () => void }];
 const initialState: AppStore = [
@@ -13,7 +14,7 @@ type AppProviderProps = {
   children: JSX.Element[] | JSX.Element;
 };
 export function AppProvider(props: AppProviderProps) {
-  const [state, setState] = createState(initialState[0]);
+  const [state, setState] = createStore(initialState[0]);
   const store: AppStore = [
     state,
     {
@@ -36,9 +37,7 @@ export function AppProvider(props: AppProviderProps) {
       );
     }
   }
-  return (
-    <AppContext.Provider value={store}>{props.children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={store}>{props.children}</AppContext.Provider>;
 }
 
 export function useAppStore() {

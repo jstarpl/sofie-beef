@@ -1,5 +1,6 @@
-import { router } from '@/router';
 import s from './Landing.module.scss';
+
+import { router } from '@/router';
 import { useAppStore } from '@/stores/AppStore';
 
 let email = '';
